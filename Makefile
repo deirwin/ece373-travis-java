@@ -2,7 +2,7 @@ all:
 	javac HelloWorld.java
 	javac test/*.java
 
-test:
+testscript:
 	testscript.sh
 
 clean:
