@@ -3,7 +3,7 @@ all:
 	javac test/*.java
 
 testscript:
-	testscript.sh
+	./testscript.sh
 
 clean:
 	rm *.class test/*.class
