@@ -1,4 +1,4 @@
-public class test2 { 
+public class test3 { 
 
     public static void main(String[] args) {
 
@@ -6,8 +6,8 @@ public class test2 {
         int year = Integer.parseInt(args[1]);     // year
 
 	Day myday = new Day();
-        int d = myday.getDay(month, 1, year);
+        boolean b = myday.isLeapYear(year);
         
-        System.out.println(d);
+        System.out.println(b);
      }
 }

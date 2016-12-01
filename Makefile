@@ -1,9 +1,8 @@
 all:
-	javac HelloWorld.java
-	javac test/*.java
+	javac *.java
 
 testscript:
 	./testscript.sh
 
 clean:
-	rm *.class test/*.class
+	rm -f *.class test/*.out

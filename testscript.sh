@@ -4,6 +4,10 @@
 function check {
   # The test/ directory stores txt files that
   # have the inputs and outputs for each test
+  # We first clean out any old output files from
+  # previous tests.
+  rm -f test/*.out
+
   # We loop through each text file. We name each
   # text file test#., where # is the number of the test
   # Files ending in *.in store the input, and
@@ -21,24 +25,24 @@ function check {
     while read -r line
     do
       # We run the test and store the output as test#.out
-      java $NAME $line > test/$NAME.out
+      java $NAME $line >> test/$NAME.out
+    done < test/$NAME.in
 
-      # We check whether the output matches our expected output
-      diff test/$NAME.out test/$NAME.sol
+    # We check whether the output matches our expected output
+    diff test/$NAME.out test/$NAME.sol
 
-      # A non-zero return code means that it does not match
-      EXIT=`echo $?`
-      if [ $EXIT -ne 0 ]
-      then
-        echo "$NAME failed"
-        # We exit immediately if a test fails
-        exit 1
-      else
-        echo "$NAME passed"
-	# Remove the test
-        rm $NAME.class
-      fi
-    done <$NAME.in
+    # A non-zero return code means that it does not match
+    EXIT=`echo $?`
+    if [ $EXIT -ne 0 ]
+    then
+      echo "$NAME failed"
+      # We exit immediately if a test fails
+      exit 1
+    else
+      echo "$NAME passed"
+      # Remove the test
+      rm $NAME.class
+    fi
   done
 }
 
