@@ -3,11 +3,6 @@ public class test1 {
     public static void main(String[] args) {
 
         int month = Integer.parseInt(args[0]);    // month (Jan = 1, Dec = 12)
-	if (month >12 || month <1) {
-	  System.out.println("Month OutOfBoundsError");
-	  System.exit(1);
-	}
-
         int year = Integer.parseInt(args[1]);     // year
 
 	int day = Integer.parseInt(args[2]);	  // for output value testing
@@ -22,10 +17,6 @@ public class test1 {
 	myday.setDay(day);
 	myday.setLeap(leap);
       	int d = myday.getDay(month, 1, year);
-	if (d > 31 || d <1) {
-	  System.out.println("Day OutOfBoundsError");
-	  System.exit(1);
-	}
 
         toScreen.setStartDay(d);
 
