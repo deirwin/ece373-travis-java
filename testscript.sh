@@ -25,7 +25,11 @@ function check {
     while read -r line
     do
       # We run the test and store the output as test#.out
-      java $NAME $line >> test/$NAME.out
+      # java $NAME $line >> test/$NAME.out
+      java -XX:-UseSplitVerifier -cp emma.jar emmarun -cp . $NAME $line >> test/$NAME.out
+      cat test/$NAME.out | sed '$d' > test/$NAME.out.2
+      mv test/$NAME.out.2 test/$NAME.out
+      mv coverage.txt test/$NAME-coverage.txt
     done < test/$NAME.in
 
     # We check whether the output matches our expected output
