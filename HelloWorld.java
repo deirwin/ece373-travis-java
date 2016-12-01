@@ -1,8 +1,13 @@
 public class HelloWorld {
-
     public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
+      float lat = Float.parseFloat(args[1]);
+      float lon = Float.parseFloat(args[2]);
+
+      Location myloc= new Location();
+      myloc.setLatitude(lat);
+      myloc.setLongitude(lon);
+
+      Time mytime = new Time();
     }
 
 }
